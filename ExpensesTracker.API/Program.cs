@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using ExpensesTracker.Core.Interfaces;
 namespace ExpensesTracker.API
 {
     public class Program
@@ -22,6 +23,7 @@ namespace ExpensesTracker.API
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddScoped<IGenericRepository>();
 
             var app = builder.Build();
 
